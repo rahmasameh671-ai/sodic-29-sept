@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initMobileNavigation();
   initLeadCaptureForm();
   initSmoothScroll();
+  initAnalyticsTracking();
 });
 
 /**
@@ -94,6 +95,14 @@ function initLeadCaptureForm() {
       localStorage.setItem('properties_eg_sodic_leads', JSON.stringify(storedLeads));
     } catch (e) {}
 
+    // Google tag conversion event
+    if (typeof gtag === 'function') {
+      gtag('event', 'generate_lead', {
+        event_category: 'Lead Capture',
+        event_label: defaultProject
+      });
+    }
+
     const waText = encodeURIComponent(
       `Hello properties, I just registered my interest in The Lakes at SODIC East.\n` +
       `Name: ${fullName}\n` +
@@ -169,3 +178,21 @@ function initSmoothScroll() {
     });
   });
 }
+
+/**
+ * Analytics Tracking for WhatsApp and CTA interactions
+ */
+function initAnalyticsTracking() {
+  document.querySelectorAll('a[href*="wa.me"]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (typeof gtag === 'function') {
+        gtag('event', 'contact', {
+          event_category: 'Engagement',
+          method: 'WhatsApp',
+          event_label: 'Direct WhatsApp Chat'
+        });
+      }
+    });
+  });
+}
+
