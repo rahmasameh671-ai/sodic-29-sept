@@ -1,5 +1,5 @@
 /* ==========================================================================
-   SODIC PREMIER DEVELOPMENTS - BY PROPERTIES-EG
+   SODIC PREMIER DEVELOPMENTS - BY PROPERTIES-E
    CRITICAL COLOR PALETTE & LUXURY ARCHITECTURAL STYLING (ZERO GOLD POLICY)
    ========================================================================== */
 
@@ -203,10 +203,10 @@ h1, h2, h3, h4, .serif-heading {
 }
 
 .brand-subbadge {
-  font-size: 0.625rem;
+  font-size: 0.65rem;
   font-weight: 700;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  text-transform: none;
   color: var(--text-charcoal-primary);
   margin-top: 0.15rem;
   padding-left: 0.15rem;
@@ -413,8 +413,8 @@ h1, h2, h3, h4, .serif-heading {
 .hero-subbadge {
   font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  text-transform: none;
   color: var(--text-charcoal-primary);
   margin-top: 0.35rem;
   padding: 0.2rem 0.55rem;
@@ -1161,8 +1161,8 @@ h1, h2, h3, h4, .serif-heading {
 .footer-subbadge {
   font-size: 0.75rem;
   font-weight: 700;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  text-transform: none;
   color: var(--text-charcoal-primary);
   display: inline-block;
   margin-top: 0.25rem;
@@ -1323,7 +1323,7 @@ h1, h2, h3, h4, .serif-heading {
 
 /* ==========================================================================
    MOBILE VIEW OPTIMIZATION & RESPONSIVENESS
-   ========================================================================== */
+   ========================================================================= */
 @media (max-width: 1024px) {
   .hero-headline {
     font-size: 2.85rem;
