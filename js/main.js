@@ -1,5 +1,5 @@
 /**
- * SODIC PREMIER DEVELOPMENTS - BY PROPERTIES
+ * SODIC PREMIER DEVELOPMENTS - BY PROPERTIES-E
  * Main JavaScript Engine: Form Handling, Logo Transparency & UI Interactions
  */
 

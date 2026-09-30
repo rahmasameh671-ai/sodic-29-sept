@@ -1,6 +1,6 @@
-# SODIC Premier Developments — By Properties-eg
+# SODIC Premier Developments — By properties-e
 
-A modern, high-end real estate landing page showcasing the premier development portfolio of **SODIC** in Egypt, presented by **Properties-eg** (authorized real estate brokerage and marketing partner).
+A modern, high-end real estate landing page showcasing the premier development portfolio of **SODIC** in Egypt, presented by **properties-e** (authorized real estate brokerage and marketing partner).
 
 ## 🌟 Featured Developments
 
