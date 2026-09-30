@@ -9,6 +9,30 @@
     gtag('js', new Date());
 
     gtag('config', 'G-C8G81VEPNH');
+    gtag('config', 'AW-18462270869');
+  </script>
+
+  <!-- Event snippet for Submit lead form & WhatsApp conversion page -->
+  <script>
+  function gtag_report_conversion(url) {
+    var callback = function () {
+      if (typeof(url) != 'undefined' && url) {
+        window.location = url;
+      }
+    };
+    if (typeof gtag === 'function') {
+      gtag('event', 'conversion', {
+          'send_to': 'AW-18462270869/DjcxCIfusYIdEJXLv-NE',
+          'event_callback': callback
+      });
+      if (typeof(url) != 'undefined' && url) {
+        setTimeout(callback, 500);
+      }
+    } else {
+      callback();
+    }
+    return false;
+  }
   </script>
 
   <meta charset="UTF-8">
@@ -283,7 +307,7 @@
             </div>
 
             <!-- Vibrant Green WhatsApp CTA Button -->
-            <a href="https://wa.me/201033373331?text=Hello%2C%20I%20would%20like%20to%20inquire%20about%20The%20Lakes%20at%20SODIC%20East" target="_blank" class="btn btn-whatsapp btn-full">
+            <a href="https://wa.me/201033373331?text=Hello%2C%20I%20would%20like%20to%20inquire%20about%20The%20Lakes%20at%20SODIC%20East" target="_blank" class="btn btn-whatsapp btn-full" onclick="return gtag_report_conversion(this.href);">
               <i class="fa-brands fa-whatsapp"></i> CONTACT US
             </a>
           </div>
@@ -367,7 +391,7 @@
             </div>
 
             <!-- Solid WhatsApp Green CTA Button -->
-            <a href="https://wa.me/201033373331?text=Hello%2C%20I%20would%20like%20to%20inquire%20about%20Ogami%20by%20SODIC" target="_blank" class="btn btn-whatsapp btn-full">
+            <a href="https://wa.me/201033373331?text=Hello%2C%20I%20would%20like%20to%20inquire%20about%20Ogami%20by%20SODIC" target="_blank" class="btn btn-whatsapp btn-full" onclick="return gtag_report_conversion(this.href);">
               <i class="fa-brands fa-whatsapp"></i> CONTACT US
             </a>
           </div>
@@ -464,7 +488,7 @@
             </div>
 
             <!-- Solid WhatsApp Green CTA Button -->
-            <a href="https://wa.me/201033373331?text=Hello%2C%20I%20would%20like%20to%20inquire%20about%20East%20Vale%20Mostakbal%20City%20by%20SODIC" target="_blank" class="btn btn-whatsapp btn-full">
+            <a href="https://wa.me/201033373331?text=Hello%2C%20I%20would%20like%20to%20inquire%20about%20East%20Vale%20Mostakbal%20City%20by%20SODIC" target="_blank" class="btn btn-whatsapp btn-full" onclick="return gtag_report_conversion(this.href);">
               <i class="fa-brands fa-whatsapp"></i> CONTACT US
             </a>
           </div>
@@ -526,7 +550,7 @@
               <td>0% Down Payment</td>
               <td>Over 10 Years</td>
               <td>
-                <a href="https://wa.me/201033373331?text=Hello%2C%20I%20would%20like%20to%20inquire%20about%20The%20Lakes%20at%20SODIC%20East" target="_blank" class="btn btn-whatsapp" style="padding: 0.5rem 1rem; font-size: 0.78rem;">
+                <a href="https://wa.me/201033373331?text=Hello%2C%20I%20would%20like%20to%20inquire%20about%20The%20Lakes%20at%20SODIC%20East" target="_blank" class="btn btn-whatsapp" style="padding: 0.5rem 1rem; font-size: 0.78rem;" onclick="return gtag_report_conversion(this.href);">
                   <i class="fa-brands fa-whatsapp"></i> Inquire
                 </a>
               </td>
@@ -542,7 +566,7 @@
               <td>Developer Terms</td>
               <td>Up to 7 Years</td>
               <td>
-                <a href="https://wa.me/201033373331?text=Hello%2C%20I%20would%20like%20to%20inquire%20about%20Ogami%20by%20SODIC" target="_blank" class="btn btn-whatsapp" style="padding: 0.5rem 1rem; font-size: 0.78rem;">
+                <a href="https://wa.me/201033373331?text=Hello%2C%20I%20would%20like%20to%20inquire%20about%20Ogami%20by%20SODIC" target="_blank" class="btn btn-whatsapp" style="padding: 0.5rem 1rem; font-size: 0.78rem;" onclick="return gtag_report_conversion(this.href);">
                   <i class="fa-brands fa-whatsapp"></i> Inquire
                 </a>
               </td>
@@ -561,7 +585,7 @@
               <td>5% (≈ 0.525M / 1.65M)</td>
               <td>Up to 9 Years</td>
               <td>
-                <a href="https://wa.me/201033373331?text=Hello%2C%20I%20would%20like%20to%20inquire%20about%20East%20Vale%20Mostakbal%20City%20by%20SODIC" target="_blank" class="btn btn-whatsapp" style="padding: 0.5rem 1rem; font-size: 0.78rem;">
+                <a href="https://wa.me/201033373331?text=Hello%2C%20I%20would%20like%20to%20inquire%20about%20East%20Vale%20Mostakbal%20City%20by%20SODIC" target="_blank" class="btn btn-whatsapp" style="padding: 0.5rem 1rem; font-size: 0.78rem;" onclick="return gtag_report_conversion(this.href);">
                   <i class="fa-brands fa-whatsapp"></i> Inquire
                 </a>
               </td>
@@ -667,7 +691,7 @@
        FLOATING ACTIONS (WHATSAPP TO +201033373331 - ICON ONLY)
        ========================================================================== -->
   <div class="floating-actions-container">
-    <a href="https://wa.me/201033373331?text=Hello%2C%20I%20would%20like%20to%20inquire%20about%20SODIC%20Developments" target="_blank" class="floating-whatsapp-btn" title="Chat on WhatsApp (+201033373331)" aria-label="Chat on WhatsApp (+201033373331)">
+    <a href="https://wa.me/201033373331?text=Hello%2C%20I%20would%20like%20to%20inquire%20about%20SODIC%20Developments" target="_blank" class="floating-whatsapp-btn" title="Chat on WhatsApp (+201033373331)" aria-label="Chat on WhatsApp (+201033373331)" onclick="return gtag_report_conversion(this.href);">
       <i class="fa-brands fa-whatsapp"></i>
     </a>
   </div>
