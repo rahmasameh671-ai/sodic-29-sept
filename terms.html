@@ -9,6 +9,30 @@
     gtag('js', new Date());
 
     gtag('config', 'G-C8G81VEPNH');
+    gtag('config', 'AW-18462270869');
+  </script>
+
+  <!-- Event snippet for Submit lead form & WhatsApp conversion page -->
+  <script>
+  function gtag_report_conversion(url) {
+    var callback = function () {
+      if (typeof(url) != 'undefined' && url) {
+        window.location = url;
+      }
+    };
+    if (typeof gtag === 'function') {
+      gtag('event', 'conversion', {
+          'send_to': 'AW-18462270869/DjcxCIfusYIdEJXLv-NE',
+          'event_callback': callback
+      });
+      if (typeof(url) != 'undefined' && url) {
+        setTimeout(callback, 500);
+      }
+    } else {
+      callback();
+    }
+    return false;
+  }
   </script>
 
   <meta charset="UTF-8">
