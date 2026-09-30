@@ -95,11 +95,20 @@ function initLeadCaptureForm() {
       localStorage.setItem('properties_eg_sodic_leads', JSON.stringify(storedLeads));
     } catch (e) {}
 
-    // Google tag conversion event
+    // Google tag conversion events
     if (typeof gtag === 'function') {
       gtag('event', 'generate_lead', {
         event_category: 'Lead Capture',
         event_label: defaultProject
+      });
+    }
+
+    // Google Ads conversion event for Form Submission
+    if (typeof gtag_report_conversion === 'function') {
+      gtag_report_conversion();
+    } else if (typeof gtag === 'function') {
+      gtag('event', 'conversion', {
+        'send_to': 'AW-18462270869/DjcxCIfusYIdEJXLv-NE'
       });
     }
 
@@ -123,7 +132,11 @@ function initLeadCaptureForm() {
 
       setTimeout(() => {
         if (confirm(`Thank you ${fullName}! Would you like to connect directly via WhatsApp (+201033373331) for instant brochures, floorplans, and pricing details for The Lakes at SODIC East?`)) {
-          window.open(whatsappUrl, '_blank');
+          if (typeof gtag_report_conversion === 'function') {
+            gtag_report_conversion(whatsappUrl);
+          } else {
+            window.open(whatsappUrl, '_blank');
+          }
         }
       }, 700);
 
@@ -181,15 +194,26 @@ function initSmoothScroll() {
 
 /**
  * Analytics Tracking for WhatsApp and CTA interactions
+ * Fires both GA4 'contact' event and Google Ads 'conversion' event
  */
 function initAnalyticsTracking() {
-  document.querySelectorAll('a[href*="wa.me"]').forEach(btn => {
-    btn.addEventListener('click', () => {
+  document.querySelectorAll('a[href*="wa.me"], .btn-whatsapp, .floating-whatsapp-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      // 1. GA4 Engagement Event
       if (typeof gtag === 'function') {
         gtag('event', 'contact', {
           event_category: 'Engagement',
           method: 'WhatsApp',
-          event_label: 'Direct WhatsApp Chat'
+          event_label: this.getAttribute('href') || 'Direct WhatsApp Chat'
+        });
+      }
+
+      // 2. Google Ads Conversion Event
+      if (typeof gtag_report_conversion === 'function') {
+        gtag_report_conversion();
+      } else if (typeof gtag === 'function') {
+        gtag('event', 'conversion', {
+          'send_to': 'AW-18462270869/DjcxCIfusYIdEJXLv-NE'
         });
       }
     });
