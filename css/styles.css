@@ -197,9 +197,11 @@ h1, h2, h3, h4, .serif-heading {
 }
 
 .brand-sodic-logo {
-  height: 32px;
+  height: 44px;
   width: auto;
+  max-width: 175px;
   object-fit: contain;
+  image-rendering: -webkit-optimize-contrast;
 }
 
 .brand-subbadge {
@@ -405,9 +407,11 @@ h1, h2, h3, h4, .serif-heading {
 }
 
 .hero-sodic-logo-xl {
-  height: 48px;
+  height: 68px;
   width: auto;
+  max-width: 270px;
   object-fit: contain;
+  image-rendering: -webkit-optimize-contrast;
 }
 
 .hero-subbadge {
@@ -621,6 +625,71 @@ h1, h2, h3, h4, .serif-heading {
   font-size: 0.875rem;
 }
 
+/* Phone Input Group with International Country Code Selector */
+.phone-input-group {
+  display: flex;
+  gap: 0.55rem;
+  width: 100%;
+}
+
+.country-code-wrapper {
+  position: relative;
+  flex: 0 0 130px;
+}
+
+.country-code-select {
+  width: 100%;
+  height: 100%;
+  padding: 0.95rem 1.65rem 0.95rem 0.85rem;
+  appearance: none;
+  -webkit-appearance: none;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid var(--slate-border);
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-charcoal-primary);
+  cursor: pointer;
+  outline: none;
+  transition: var(--transition);
+}
+
+.country-code-select:focus {
+  background: #FFFFFF;
+  border-color: var(--text-charcoal-primary);
+  box-shadow: 0 0 0 3px rgba(26, 32, 44, 0.08);
+}
+
+.country-chevron {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+.phone-input-wrapper {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.phone-field-icon {
+  position: absolute;
+  left: 1.15rem;
+  color: var(--text-subtle);
+  font-size: 0.9rem;
+  pointer-events: none;
+}
+
+.phone-number-input {
+  width: 100%;
+  padding: 0.95rem 1.15rem 0.95rem 2.85rem;
+}
+
 .form-disclaimer {
   font-size: 0.72rem;
   line-height: 1.55;
@@ -696,11 +765,28 @@ h1, h2, h3, h4, .serif-heading {
 
 /* Official Logo serving as Primary Visual Section Header */
 .project-official-logo {
-  height: 52px;
+  height: 76px;
   width: auto;
-  max-width: 280px;
+  max-width: 320px;
   object-fit: contain;
   align-self: flex-start;
+  display: block;
+  image-rendering: -webkit-optimize-contrast;
+}
+
+.project-logo-sodic-east {
+  height: 92px;
+  max-width: 220px;
+}
+
+.project-logo-ogami {
+  height: 76px;
+  max-width: 320px;
+}
+
+.project-logo-eastvale {
+  height: 72px;
+  max-width: 320px;
 }
 
 .project-tagline {
@@ -1069,21 +1155,13 @@ h1, h2, h3, h4, .serif-heading {
    ========================================================================== */
 .about-properties-strip {
   background: var(--bg-pure-white);
-  padding: 5rem 0;
+  padding: 5.5rem 0;
 }
 
-.about-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3.5rem;
-  align-items: center;
-}
-
-.about-card-box {
-  background: var(--bg-pearl-grey);
-  border: 1px solid var(--slate-border);
-  border-radius: var(--radius-lg);
-  padding: 2.75rem;
+.about-content-wrapper {
+  max-width: 860px;
+  margin: 0 auto;
+  text-align: left;
 }
 
 .about-badge {
@@ -1097,21 +1175,25 @@ h1, h2, h3, h4, .serif-heading {
 }
 
 .about-title {
-  font-size: 2rem;
+  font-size: 2.2rem;
   margin-bottom: 1.25rem;
 }
 
 .about-text {
-  font-size: 0.95rem;
-  line-height: 1.7;
+  font-size: 1.05rem;
+  line-height: 1.75;
   color: var(--text-charcoal-secondary);
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
 }
 
 .contact-quick-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.85rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  padding: 1.75rem 2rem;
+  background: var(--bg-pearl-grey);
+  border: 1px solid var(--slate-border);
+  border-radius: var(--radius-md);
 }
 
 .contact-quick-item {
@@ -1124,8 +1206,8 @@ h1, h2, h3, h4, .serif-heading {
 }
 
 .contact-quick-item i {
-  color: var(--text-muted);
-  width: 20px;
+  color: var(--text-charcoal-primary);
+  font-size: 1.15rem;
 }
 
 /* ==========================================================================
@@ -1140,8 +1222,8 @@ h1, h2, h3, h4, .serif-heading {
 
 .footer-top-grid {
   display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
-  gap: 3rem;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 3.5rem;
   padding-bottom: 4rem;
   border-bottom: 1px solid rgba(226, 232, 240, 0.9);
 }
@@ -1153,9 +1235,11 @@ h1, h2, h3, h4, .serif-heading {
 }
 
 .footer-sodic-logo {
-  height: 38px;
+  height: 48px;
   width: auto;
+  max-width: 190px;
   object-fit: contain;
+  image-rendering: -webkit-optimize-contrast;
 }
 
 .footer-subbadge {
@@ -1237,41 +1321,38 @@ h1, h2, h3, h4, .serif-heading {
 }
 
 /* ==========================================================================
-   FLOATING ACTION BUTTONS (WHATSAPP TO +201033373331)
+   FLOATING ACTION BUTTON (WHATSAPP TO +201033373331 - ICON ONLY)
    ========================================================================== */
 .floating-actions-container {
   position: fixed;
-  bottom: 2rem;
-  right: 2rem;
+  bottom: 2.25rem;
+  right: 2.25rem;
   z-index: 999;
-  display: flex;
-  flex-direction: column;
-  gap: 0.85rem;
 }
 
 .floating-whatsapp-btn {
   display: flex;
   align-items: center;
-  gap: 0.65rem;
+  justify-content: center;
+  width: 62px;
+  height: 62px;
   background: var(--whatsapp-green);
   color: #FFFFFF !important;
-  padding: 0.85rem 1.35rem;
-  border-radius: var(--radius-full);
-  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4);
-  font-weight: 700;
-  font-size: 0.9rem;
-  letter-spacing: 0.04em;
+  border-radius: 50%;
+  box-shadow: 0 10px 25px rgba(37, 211, 102, 0.45);
   transition: var(--transition);
+  text-decoration: none;
 }
 
 .floating-whatsapp-btn:hover {
   background: var(--whatsapp-green-hover);
-  transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 12px 28px rgba(37, 211, 102, 0.5);
+  transform: translateY(-4px) scale(1.06);
+  box-shadow: 0 14px 32px rgba(37, 211, 102, 0.55);
 }
 
 .floating-whatsapp-btn i {
-  font-size: 1.35rem;
+  font-size: 2.15rem;
+  color: #FFFFFF;
 }
 
 /* Toast */
@@ -1313,12 +1394,6 @@ h1, h2, h3, h4, .serif-heading {
   font-size: 0.8rem;
   color: var(--text-muted);
   line-height: 1.4;
-}
-
-.logo-invert-charcoal {
-  filter: invert(1) brightness(0.15) contrast(1.2);
-  mix-blend-mode: multiply;
-  transition: opacity 0.2s ease;
 }
 
 /* ==========================================================================
@@ -1427,8 +1502,58 @@ h1, h2, h3, h4, .serif-heading {
     gap: 1.25rem;
   }
 
+  .brand-sodic-logo {
+    height: 38px;
+    max-width: 155px;
+  }
+
+  .hero-sodic-logo-xl {
+    height: 56px;
+    max-width: 230px;
+  }
+
   .project-official-logo {
-    height: 44px;
+    height: 66px;
+    max-width: 280px;
+  }
+
+  .project-logo-sodic-east {
+    height: 80px;
+    max-width: 180px;
+  }
+
+  .project-logo-ogami {
+    height: 66px;
+    max-width: 260px;
+  }
+
+  .project-logo-eastvale {
+    height: 62px;
+    max-width: 260px;
+  }
+
+  .footer-sodic-logo {
+    height: 42px;
+    max-width: 170px;
+  }
+
+  .country-code-wrapper {
+    flex: 0 0 118px;
+  }
+
+  .country-code-select {
+    padding: 0.85rem 1.4rem 0.85rem 0.65rem;
+    font-size: 0.82rem;
+  }
+
+  .phone-number-input {
+    padding: 0.85rem 1rem 0.85rem 2.6rem;
+    font-size: 0.9rem;
+  }
+
+  .phone-field-icon {
+    left: 0.95rem;
+    font-size: 0.82rem;
   }
 
   .project-features-list {
@@ -1449,12 +1574,17 @@ h1, h2, h3, h4, .serif-heading {
   }
 
   .floating-actions-container {
-    bottom: 1.25rem;
-    right: 1.25rem;
+    bottom: 1.5rem;
+    right: 1.5rem;
   }
 
   .floating-whatsapp-btn {
-    padding: 0.75rem 1.15rem;
-    font-size: 0.85rem;
+    width: 56px;
+    height: 56px;
+    padding: 0;
+  }
+
+  .floating-whatsapp-btn i {
+    font-size: 1.85rem;
   }
 }
