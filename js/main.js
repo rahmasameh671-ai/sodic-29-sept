@@ -1,75 +1,13 @@
 /**
  * SODIC PREMIER DEVELOPMENTS - BY PROPERTIES-E
- * Main JavaScript Engine: Form Handling, Logo Transparency & UI Interactions
+ * Main JavaScript Engine: Form Handling, Mobile Navigation & UI Interactions
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  initLogoTransparency();
   initMobileNavigation();
   initLeadCaptureForm();
   initSmoothScroll();
 });
-
-/**
- * Converts black-background white logos into transparent PNGs directly in the browser.
- * For light backgrounds: renders crisp deep charcoal (#1A202C).
- */
-function initLogoTransparency() {
-  const images = document.querySelectorAll('img[data-transparent]');
-  
-  images.forEach(img => {
-    if (img.complete && img.naturalWidth !== 0) {
-      processImageTransparency(img);
-    } else {
-      img.addEventListener('load', () => processImageTransparency(img));
-    }
-  });
-}
-
-function processImageTransparency(img) {
-  try {
-    const canvas = document.createElement('canvas');
-    const ctx = canvas.getContext('2d');
-    canvas.width = img.naturalWidth || img.width;
-    canvas.height = img.naturalHeight || img.height;
-
-    if (canvas.width === 0 || canvas.height === 0) return;
-
-    ctx.drawImage(img, 0, 0);
-    const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-    const data = imgData.data;
-
-    const targetTheme = img.getAttribute('data-transparent') || 'charcoal';
-    const isCharcoal = targetTheme === 'charcoal';
-    
-    const targetR = isCharcoal ? 26 : 255;
-    const targetG = isCharcoal ? 32 : 255;
-    const targetB = isCharcoal ? 44 : 255;
-
-    for (let i = 0; i < data.length; i += 4) {
-      const r = data[i];
-      const g = data[i + 1];
-      const b = data[i + 2];
-      
-      const luminance = (r * 0.299 + g * 0.587 + b * 0.114);
-
-      if (luminance < 18) {
-        data[i + 3] = 0;
-      } else {
-        data[i] = targetR;
-        data[i + 1] = targetG;
-        data[i + 2] = targetB;
-        data[i + 3] = Math.min(255, Math.floor(luminance * 1.1));
-      }
-    }
-
-    ctx.putImageData(imgData, 0, 0);
-    img.src = canvas.toDataURL('image/png');
-    img.classList.remove('logo-invert-charcoal');
-  } catch (err) {
-    console.log('Canvas transparency fallback active:', err.message);
-  }
-}
 
 /**
  * Mobile Navigation Toggle
@@ -115,14 +53,17 @@ function initLeadCaptureForm() {
 
     const fullNameInput = document.getElementById('leadFullName');
     const phoneInput = document.getElementById('leadPhone');
+    const countryCodeSelect = document.getElementById('countryCode');
 
     if (!fullNameInput || !phoneInput) return;
 
     const fullName = fullNameInput.value.trim();
-    const phone = phoneInput.value.trim();
+    const phoneRaw = phoneInput.value.trim().replace(/^0+/, '');
+    const countryCode = countryCodeSelect ? countryCodeSelect.value : '+20';
+    const fullPhone = `${countryCode} ${phoneRaw}`;
     const defaultProject = 'The Lakes at SODIC East & Portfolio';
 
-    if (!fullName || !phone) {
+    if (!fullName || !phoneRaw) {
       alert('Please enter your full name and phone number.');
       return;
     }
@@ -135,7 +76,9 @@ function initLeadCaptureForm() {
     const leadData = {
       timestamp: new Date().toISOString(),
       fullName: fullName,
-      phone: phone,
+      phone: fullPhone,
+      countryCode: countryCode,
+      rawPhone: phoneRaw,
       projectFocus: defaultProject,
       source: 'SODIC Landing Page - The Lakes Launch - Properties',
       routedEmails: [
@@ -154,7 +97,7 @@ function initLeadCaptureForm() {
     const waText = encodeURIComponent(
       `Hello properties, I just registered my interest in The Lakes at SODIC East.\n` +
       `Name: ${fullName}\n` +
-      `Phone: ${phone}`
+      `Phone: ${fullPhone}`
     );
     const whatsappUrl = `https://wa.me/201033373331?text=${waText}`;
 
