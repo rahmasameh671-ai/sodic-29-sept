@@ -49,7 +49,7 @@ function initLeadCaptureForm() {
   const leadForm = document.getElementById('heroLeadForm');
   if (!leadForm) return;
 
-  leadForm.addEventListener('submit', function(e) {
+  leadForm.addEventListener('submit', async function(e) {
     e.preventDefault();
 
     const fullNameInput = document.getElementById('leadFullName');
@@ -73,6 +73,28 @@ function initLeadCaptureForm() {
     const originalBtnText = submitBtn.innerHTML;
     submitBtn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> REGISTERING...';
     submitBtn.disabled = true;
+
+    // Construct Zapier webhook payload matching user schema
+    const zapierPayload = {
+      fullName: fullName,
+      phoneNumber: fullPhone,
+      landingPageUrl: window.location.href,
+      submissionDate: new Date().toISOString(),
+      countryCode: countryCode,
+      rawPhone: phoneRaw,
+      projectFocus: defaultProject,
+      source: 'SODIC Landing Page - The Lakes Launch - Properties'
+    };
+
+    // Dispatch lead directly to Zapier Webhook
+    try {
+      await fetch("https://hooks.zapier.com/hooks/catch/25429357/uclzmpn/", {
+        method: "POST",
+        body: JSON.stringify(zapierPayload),
+      });
+    } catch (error) {
+      console.error("Zapier Webhook Error:", error);
+    }
 
     const leadData = {
       timestamp: new Date().toISOString(),
@@ -119,34 +141,31 @@ function initLeadCaptureForm() {
     );
     const whatsappUrl = `https://wa.me/201033373331?text=${waText}`;
 
+    submitBtn.innerHTML = '<i class="fa-solid fa-check"></i> INTEREST REGISTERED';
+    submitBtn.style.backgroundColor = '#1A202C';
+
+    showToast(
+      'Interest Registered',
+      `Thank you ${fullName}. Our senior property consultant will contact you promptly.`
+    );
+
+    leadForm.reset();
+
     setTimeout(() => {
-      submitBtn.innerHTML = '<i class="fa-solid fa-check"></i> INTEREST REGISTERED';
-      submitBtn.style.backgroundColor = '#1A202C';
-
-      showToast(
-        'Interest Registered',
-        `Thank you ${fullName}. Our senior property consultant will contact you promptly.`
-      );
-
-      leadForm.reset();
-
-      setTimeout(() => {
-        if (confirm(`Thank you ${fullName}! Would you like to connect directly via WhatsApp (+201033373331) for instant brochures, floorplans, and pricing details for The Lakes at SODIC East?`)) {
-          if (typeof gtag_report_conversion === 'function') {
-            gtag_report_conversion(whatsappUrl);
-          } else {
-            window.open(whatsappUrl, '_blank');
-          }
+      if (confirm(`Thank you ${fullName}! Would you like to connect directly via WhatsApp (+201033373331) for instant brochures, floorplans, and pricing details for The Lakes at SODIC East?`)) {
+        if (typeof gtag_report_conversion === 'function') {
+          gtag_report_conversion(whatsappUrl);
+        } else {
+          window.open(whatsappUrl, '_blank');
         }
-      }, 700);
+      }
+    }, 700);
 
-      setTimeout(() => {
-        submitBtn.innerHTML = originalBtnText;
-        submitBtn.disabled = false;
-        submitBtn.style.backgroundColor = '';
-      }, 4000);
-
-    }, 750);
+    setTimeout(() => {
+      submitBtn.innerHTML = originalBtnText;
+      submitBtn.disabled = false;
+      submitBtn.style.backgroundColor = '';
+    }, 4000);
   });
 }
 
