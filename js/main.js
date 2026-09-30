@@ -35,6 +35,15 @@ function initMobileNavigation() {
       menuBtn.innerHTML = '<i class="fa-solid fa-bars"></i>';
     });
   });
+
+  // Close menu on clicking outside
+  document.addEventListener('click', (e) => {
+    if (navMenu.classList.contains('open') && !navMenu.contains(e.target) && !menuBtn.contains(e.target)) {
+      navMenu.classList.remove('open');
+      menuBtn.setAttribute('aria-expanded', 'false');
+      menuBtn.innerHTML = '<i class="fa-solid fa-bars"></i>';
+    }
+  });
 }
 
 /**
@@ -198,7 +207,7 @@ function initSmoothScroll() {
       const targetElement = document.querySelector(targetId);
       if (targetElement) {
         e.preventDefault();
-        const headerOffset = 85;
+        const headerOffset = window.innerWidth <= 480 ? 68 : (window.innerWidth <= 768 ? 72 : 85);
         const elementPosition = targetElement.getBoundingClientRect().top;
         const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
