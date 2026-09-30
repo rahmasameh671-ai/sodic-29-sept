@@ -30,7 +30,7 @@
       <!-- Official SODIC Logo with 'By properties-e' Sub-badge -->
       <a href="#hero" class="brand-identity">
         <div class="brand-logo-wrapper">
-          <img src="assets/images/sodic-logo.png" alt="SODIC" class="brand-sodic-logo logo-invert-charcoal" data-transparent="charcoal">
+          <img src="assets/images/sodic-logo.png" alt="SODIC" class="brand-sodic-logo">
         </div>
         <span class="brand-subbadge">By properties-e</span>
       </a>
@@ -46,11 +46,8 @@
         </ul>
       </nav>
 
-      <!-- Header Action: WhatsApp Green Button Only -->
+      <!-- Header Action: Mobile Navigation Toggle Only -->
       <div class="header-actions">
-        <a href="https://wa.me/201033373331?text=Hello%2C%20I%20would%20like%20to%20inquire%20about%20The%20Lakes%20at%20SODIC%20East" target="_blank" class="btn btn-whatsapp" style="padding: 0.65rem 1.35rem; font-size: 0.825rem;">
-          <i class="fa-brands fa-whatsapp"></i> WhatsApp
-        </a>
         <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation">
           <i class="fa-solid fa-bars"></i>
         </button>
@@ -73,7 +70,7 @@
       <div class="hero-content">
         <!-- Top Branding: Official SODIC logo (Size XL) with 'By properties-e' -->
         <div class="hero-branding">
-          <img src="assets/images/sodic-logo.png" alt="SODIC Egypt" class="hero-sodic-logo-xl logo-invert-charcoal" data-transparent="charcoal">
+          <img src="assets/images/sodic-logo.png" alt="SODIC Egypt" class="hero-sodic-logo-xl">
           <span class="hero-subbadge">By properties-e</span>
         </div>
 
@@ -132,12 +129,40 @@
               </div>
             </div>
 
-            <!-- Phone Number Field -->
+            <!-- Phone Number Field with International Country Code Selector -->
             <div class="form-group">
               <label class="form-label" for="leadPhone">Phone Number <span class="req">*</span></label>
-              <div class="form-input-wrapper">
-                <i class="fa-solid fa-phone form-input-icon"></i>
-                <input type="tel" id="leadPhone" class="form-input" placeholder="+20 10X XXX XXXX" required>
+              <div class="phone-input-group">
+                <div class="country-code-wrapper">
+                  <select id="countryCode" class="country-code-select" aria-label="Country Dial Code">
+                    <option value="+20" selected>🇪🇬 +20</option>
+                    <option value="+966">🇸🇦 +966</option>
+                    <option value="+971">🇦🇪 +971</option>
+                    <option value="+965">🇰🇼 +965</option>
+                    <option value="+974">🇶🇦 +974</option>
+                    <option value="+968">🇴🇲 +968</option>
+                    <option value="+973">🇧🇭 +973</option>
+                    <option value="+1">🇺🇸 +1</option>
+                    <option value="+44">🇬🇧 +44</option>
+                    <option value="+49">🇩🇪 +49</option>
+                    <option value="+33">🇫🇷 +33</option>
+                    <option value="+39">🇮🇹 +39</option>
+                    <option value="+41">🇨🇭 +41</option>
+                    <option value="+31">🇳🇱 +31</option>
+                    <option value="+46">🇸🇪 +46</option>
+                    <option value="+61">🇦🇺 +61</option>
+                    <option value="+962">🇯🇴 +962</option>
+                    <option value="+961">🇱🇧 +961</option>
+                    <option value="+964">🇮🇶 +964</option>
+                    <option value="+218">🇱🇾 +218</option>
+                    <option value="+249">🇸🇩 +249</option>
+                  </select>
+                  <i class="fa-solid fa-chevron-down country-chevron"></i>
+                </div>
+                <div class="phone-input-wrapper">
+                  <i class="fa-solid fa-phone phone-field-icon"></i>
+                  <input type="tel" id="leadPhone" class="form-input phone-number-input" placeholder="10X XXX XXXX" required>
+                </div>
               </div>
             </div>
 
@@ -174,7 +199,7 @@
           <div class="project-header-group">
             <span class="subheading-badge highlight-badge">NEW WATERFRONT LAUNCH | PRIME SODIC EAST LOCATION</span>
             <!-- Official SODIC East Logo as Primary Visual Title (No redundant duplicate text header) -->
-            <img src="assets/images/sodic-east-logo.png" alt="SODIC East" class="project-official-logo logo-invert-charcoal" data-transparent="charcoal">
+            <img src="assets/images/sodic-east-logo.png" alt="SODIC East" class="project-official-logo project-logo-sodic-east">
             <div class="project-tagline">
               "A New Waterfront Living Experience — 100% of units overlooking open green spaces and scenic landscape water features."
             </div>
@@ -279,7 +304,7 @@
           <div class="project-header-group">
             <span class="subheading-badge">RAS EL HEKMA — KM 204</span>
             <!-- Official Ogami Logo as Primary Visual Title (No redundant duplicate text header) -->
-            <img src="assets/images/ogami-logo.png" alt="Ogami by SODIC" class="project-official-logo logo-invert-charcoal" data-transparent="charcoal">
+            <img src="assets/images/ogami-logo.png" alt="Ogami by SODIC" class="project-official-logo project-logo-ogami">
           </div>
 
           <p class="project-narrative">
@@ -363,7 +388,7 @@
           <div class="project-header-group">
             <span class="subheading-badge">MOSTAKBAL CITY FLAGSHIP</span>
             <!-- Official East Vale Logo as Primary Visual Title (No redundant duplicate text header) -->
-            <img src="assets/images/eastvale-logo.png" alt="East Vale Mostakbal City" class="project-official-logo logo-invert-charcoal" data-transparent="charcoal">
+            <img src="assets/images/eastvale-logo.png" alt="East Vale Mostakbal City" class="project-official-logo project-logo-eastvale">
           </div>
 
           <p class="project-narrative">
@@ -394,7 +419,6 @@
           <div class="pricing-module-card">
             <div class="card-top-tagline">
               <span class="card-unit-type">All Units: Fully Finished with ACs Included</span>
-              <span class="card-finish-tag">ACs Turnkey</span>
             </div>
 
             <!-- Dual Pricing Breakdown (Apartments & Villas) in 'M' format -->
@@ -543,38 +567,24 @@
        ========================================================================== -->
   <section class="about-properties-strip">
     <div class="container">
-      <div class="about-grid">
-        <div>
-          <span class="about-badge">AUTHORIZED CONSULTANCY &amp; BROKERAGE</span>
-          <h2 class="about-title">Why Inquire Through properties?</h2>
-          <p class="about-text">
-            properties is an independent authorized real estate brokerage and marketing platform dedicated to delivering unbiased, transparent, and comprehensive advisory across Egypt's most prestigious developments. We guide discerning buyers and private investors through official developer price lists, installment schedules, and priority reservation phases.
-          </p>
-          <div class="contact-quick-list">
-            <div class="contact-quick-item">
-              <i class="fa-solid fa-shield-check"></i>
-              <span>Authorized Marketing &amp; Brokerage Platform</span>
-            </div>
-            <div class="contact-quick-item">
-              <i class="fa-brands fa-whatsapp"></i>
-              <span>Official WhatsApp: +201033373331</span>
-            </div>
-            <div class="contact-quick-item">
-              <i class="fa-solid fa-location-dot"></i>
-              <span>Headquarters: New Cairo S5-3, Second District, Fifth Settlement, First Floor</span>
-            </div>
+      <div class="about-content-wrapper">
+        <span class="about-badge">AUTHORIZED CONSULTANCY &amp; BROKERAGE</span>
+        <h2 class="about-title">Why Inquire Through properties?</h2>
+        <p class="about-text">
+          properties is an independent authorized real estate brokerage and marketing platform dedicated to delivering unbiased, transparent, and comprehensive advisory across Egypt's most prestigious developments. We guide discerning buyers and private investors through official developer price lists, installment schedules, and priority reservation phases.
+        </p>
+        <div class="contact-quick-list">
+          <div class="contact-quick-item">
+            <i class="fa-solid fa-shield-check"></i>
+            <span>Authorized Marketing &amp; Brokerage Platform</span>
           </div>
-        </div>
-
-        <div class="about-card-box">
-          <h3 style="font-size: 1.35rem; margin-bottom: 0.85rem; font-family: var(--font-sans); font-weight: 700;">Direct Lead Concierge</h3>
-          <p style="font-size: 0.9rem; color: var(--text-charcoal-secondary); margin-bottom: 1.5rem; line-height: 1.6;">
-            All completed inquiries submitted on this portal are dispatched directly to senior property advisors and routed automatically to designated email addresses:
-          </p>
-          <div style="background:#FFFFFF; border:1px solid var(--slate-border); border-radius:var(--radius-sm); padding:1rem 1.25rem; font-size:0.85rem; color:var(--text-charcoal-primary);">
-            <div style="margin-bottom: 0.35rem;"><i class="fa-regular fa-envelope" style="margin-right: 0.5rem; color:var(--text-muted);"></i> Rahma@irtkaz.com</div>
-            <div style="margin-bottom: 0.35rem;"><i class="fa-regular fa-envelope" style="margin-right: 0.5rem; color:var(--text-muted);"></i> Mostafa.a.ashmawy@gmail.com</div>
-            <div><i class="fa-regular fa-envelope" style="margin-right: 0.5rem; color:var(--text-muted);"></i> Mostafa.ashmawy@irtkaz.com</div>
+          <div class="contact-quick-item">
+            <i class="fa-brands fa-whatsapp"></i>
+            <span>Official WhatsApp: +201033373331</span>
+          </div>
+          <div class="contact-quick-item">
+            <i class="fa-solid fa-location-dot"></i>
+            <span>Headquarters: New Cairo S5-3, Second District, Fifth Settlement, First Floor</span>
           </div>
         </div>
       </div>
@@ -590,7 +600,7 @@
         <!-- Brand Column -->
         <div class="footer-brand-col">
           <div>
-            <img src="assets/images/sodic-logo.png" alt="SODIC" class="footer-sodic-logo logo-invert-charcoal" data-transparent="charcoal">
+            <img src="assets/images/sodic-logo.png" alt="SODIC" class="footer-sodic-logo">
             <span class="footer-subbadge">By properties-e</span>
           </div>
           <p class="footer-desc">
@@ -618,25 +628,6 @@
             <li><a href="terms.html" class="footer-link">Terms &amp; Conditions</a></li>
           </ul>
         </div>
-
-        <!-- Contact Information -->
-        <div>
-          <h4 class="footer-col-title">Office &amp; Contact</h4>
-          <div class="footer-contact-item">
-            <i class="fa-brands fa-whatsapp"></i>
-            <div>
-              <strong style="color:var(--text-charcoal-primary);">Official WhatsApp:</strong><br>
-              <a href="https://wa.me/201033373331" target="_blank" style="color:inherit;">+201033373331</a>
-            </div>
-          </div>
-          <div class="footer-contact-item">
-            <i class="fa-solid fa-location-dot"></i>
-            <div>
-              <strong style="color:var(--text-charcoal-primary);">Headquarters:</strong><br>
-              New Cairo S5-3, Second District, Fifth Settlement, First Floor
-            </div>
-          </div>
-        </div>
       </div>
 
       <!-- Mandatory Disclaimer (Location B) as specified by USER -->
@@ -663,12 +654,11 @@
   </footer>
 
   <!-- ==========================================================================
-       FLOATING ACTIONS (WHATSAPP TO +201033373331)
+       FLOATING ACTIONS (WHATSAPP TO +201033373331 - ICON ONLY)
        ========================================================================== -->
   <div class="floating-actions-container">
-    <a href="https://wa.me/201033373331?text=Hello%2C%20I%20would%20like%20to%20inquire%20about%20The%20Lakes%20at%20SODIC%20East" target="_blank" class="floating-whatsapp-btn" title="Chat on WhatsApp (+201033373331)">
+    <a href="https://wa.me/201033373331?text=Hello%2C%20I%20would%20like%20to%20inquire%20about%20SODIC%20Developments" target="_blank" class="floating-whatsapp-btn" title="Chat on WhatsApp (+201033373331)" aria-label="Chat on WhatsApp (+201033373331)">
       <i class="fa-brands fa-whatsapp"></i>
-      <span>WhatsApp Us</span>
     </a>
   </div>
 
