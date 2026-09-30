@@ -1437,9 +1437,55 @@ h1, h2, h3, h4, .serif-heading {
   }
 }
 
+/* ==========================================================================
+   MOBILE & TABLET VIEW ARCHITECTURE (100% OPTIMIZED FOR ALL SCREEN SIZES)
+   ========================================================================== */
+
+/* Mobile Table Horizontal Swipe Indicator */
+.mobile-table-hint {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-charcoal-primary);
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid var(--slate-border);
+  border-radius: var(--radius-full);
+  padding: 0.5rem 1.25rem;
+  margin: 1.5rem auto 0.75rem;
+  width: fit-content;
+  box-shadow: var(--shadow-sm);
+  letter-spacing: 0.02em;
+}
+
 @media (max-width: 768px) {
+  /* Prevent horizontal overflow strictly across the viewport */
+  html, body {
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+  }
+
+  .container {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  .section-spacing {
+    padding-top: 4.25rem;
+    padding-bottom: 4.25rem;
+  }
+
+  /* Header & Navigation */
   .header-container {
     height: 72px;
+  }
+
+  .brand-sodic-logo {
+    height: 38px;
+    max-width: 155px;
   }
 
   .nav-menu {
@@ -1451,62 +1497,132 @@ h1, h2, h3, h4, .serif-heading {
     background: #FFFFFF;
     flex-direction: column;
     padding: 2rem;
-    gap: 1.5rem;
+    gap: 1.25rem;
     border-bottom: 1px solid var(--slate-border);
     box-shadow: var(--shadow-lg);
+    z-index: 1000;
   }
 
   .nav-menu.open {
     display: flex;
   }
 
-  .mobile-menu-btn {
-    display: block;
+  .nav-link {
+    font-size: 1rem;
+    padding: 0.5rem 0;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
   }
 
+  .mobile-menu-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    font-size: 1.35rem;
+    background: transparent;
+    border: none;
+    color: var(--text-charcoal-primary);
+    cursor: pointer;
+  }
+
+  /* Hero Section */
   .hero-section {
-    padding-top: 110px;
-    padding-bottom: 4rem;
+    padding-top: 105px;
+    padding-bottom: 3.5rem;
   }
 
   .hero-headline {
     font-size: 2.25rem;
-    line-height: 1.2;
+    line-height: 1.18;
     word-break: normal;
+  }
+
+  .hero-subtitle-box {
+    padding: 0.85rem 1rem;
   }
 
   .hero-subtitle-highlight {
     font-size: 1rem;
+    line-height: 1.5;
   }
 
   .hero-key-line {
     font-size: 0.88rem;
+    line-height: 1.5;
   }
 
+  /* Stats Row in Compact 3-Column Mobile Card Layout */
   .hero-stats-row {
-    grid-template-columns: 1fr;
-    gap: 1rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.65rem;
+    padding-top: 1rem;
   }
 
+  .hero-stat-card {
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid var(--slate-border);
+    border-radius: var(--radius-sm);
+    padding: 0.65rem 0.35rem;
+    text-align: center;
+    align-items: center;
+  }
+
+  .hero-stat-number {
+    font-size: 1.25rem;
+    font-weight: 800;
+  }
+
+  .hero-stat-label {
+    font-size: 0.65rem;
+    margin-top: 0.2rem;
+  }
+
+  /* Lead Capture Form */
   .frosted-lead-card {
-    padding: 2rem 1.5rem;
+    padding: 1.85rem 1.25rem;
+    border-radius: var(--radius-md);
   }
 
-  .lakes-units-grid {
-    grid-template-columns: 1fr;
-    gap: 0.85rem;
+  .lead-card-title {
+    font-size: 1.45rem;
   }
 
-  .dual-price-grid {
-    grid-template-columns: 1fr;
-    gap: 1.25rem;
+  .lead-card-sub {
+    font-size: 0.85rem;
   }
 
-  .brand-sodic-logo {
-    height: 38px;
-    max-width: 155px;
+  /* iOS Auto-Zoom Fix: Ensure form controls are at least 16px font-size */
+  .form-input,
+  .country-code-select,
+  .phone-number-input,
+  input,
+  select,
+  textarea {
+    font-size: 16px !important;
   }
 
+  .country-code-wrapper {
+    flex: 0 0 115px;
+  }
+
+  .country-code-select {
+    padding: 0.85rem 1.35rem 0.85rem 0.6rem;
+  }
+
+  .phone-number-input {
+    padding: 0.85rem 0.85rem 0.85rem 2.45rem;
+  }
+
+  .phone-field-icon {
+    left: 0.85rem;
+    font-size: 0.85rem;
+  }
+
+  /* Project Branding & Logos */
   .hero-sodic-logo-xl {
     height: 56px;
     max-width: 230px;
@@ -1537,54 +1653,328 @@ h1, h2, h3, h4, .serif-heading {
     max-width: 170px;
   }
 
-  .country-code-wrapper {
-    flex: 0 0 118px;
-  }
-
-  .country-code-select {
-    padding: 0.85rem 1.4rem 0.85rem 0.65rem;
-    font-size: 0.82rem;
-  }
-
-  .phone-number-input {
-    padding: 0.85rem 1rem 0.85rem 2.6rem;
-    font-size: 0.9rem;
-  }
-
-  .phone-field-icon {
-    left: 0.95rem;
-    font-size: 0.82rem;
-  }
-
-  .project-features-list {
+  /* Units Grid & Pricing Modules */
+  .lakes-units-grid {
     grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .lakes-unit-card {
+    padding: 0.85rem 1rem;
+  }
+
+  .pricing-module-card {
+    padding: 1.5rem 1.15rem;
   }
 
   .price-main-figure {
     font-size: 2rem;
   }
 
+  .dual-price-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .project-features-list {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .payment-journey-box {
+    padding: 0.85rem 1rem;
+  }
+
+  .payment-plan-label {
+    font-size: 0.68rem;
+  }
+
+  .payment-plan-value {
+    font-size: 0.95rem;
+  }
+
+  /* Project Visual Showcase */
   .project-visual-box {
-    height: 320px;
+    height: 290px;
+    border-radius: var(--radius-md);
+  }
+
+  .visual-floating-badge {
+    bottom: 0.85rem;
+    left: 0.85rem;
+    font-size: 0.72rem;
+    padding: 0.35rem 0.75rem;
+    max-width: calc(100% - 1.7rem);
+  }
+
+  /* Portfolio Table */
+  .mobile-table-hint {
+    display: inline-flex;
+  }
+
+  .matrix-table-container {
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    margin-top: 1rem;
+  }
+
+  .portfolio-table {
+    min-width: 680px;
+  }
+
+  .portfolio-table th, 
+  .portfolio-table td {
+    padding: 1rem 1.15rem;
+    font-size: 0.85rem;
+  }
+
+  /* About properties section */
+  .about-properties-strip {
+    padding: 3.75rem 0;
+  }
+
+  .about-title {
+    font-size: 1.85rem;
+  }
+
+  .about-text {
+    font-size: 0.98rem;
+  }
+
+  .contact-quick-list {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 1.35rem 1.25rem;
+  }
+
+  .contact-quick-item {
+    font-size: 0.85rem;
+  }
+
+  /* Footer */
+  .main-footer {
+    padding: 3.5rem 0 2rem;
   }
 
   .footer-top-grid {
     grid-template-columns: 1fr;
-    gap: 2.5rem;
+    gap: 2.25rem;
+    padding-bottom: 2.5rem;
   }
 
+  .disclosure-notice-box {
+    padding: 1rem 1.15rem;
+  }
+
+  .disclosure-text {
+    font-size: 0.8rem;
+  }
+
+  /* Floating WhatsApp Button with Safe Area Inset */
   .floating-actions-container {
-    bottom: 1.5rem;
-    right: 1.5rem;
+    bottom: calc(1.25rem + env(safe-area-inset-bottom, 0px));
+    right: calc(1.25rem + env(safe-area-inset-right, 0px));
   }
 
   .floating-whatsapp-btn {
     width: 56px;
     height: 56px;
     padding: 0;
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.45);
   }
 
   .floating-whatsapp-btn i {
     font-size: 1.85rem;
+  }
+
+  /* Bottom Snackbar Style Toast for Mobile */
+  .lead-toast {
+    top: auto;
+    bottom: calc(5.25rem + env(safe-area-inset-bottom, 0px));
+    right: 1rem;
+    left: 1rem;
+    max-width: none;
+    transform: translateY(160%);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  }
+
+  .lead-toast.show {
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================================================
+   COMPACT & STANDARD SMARTPHONES (iPhone 12/13/14/15/16, Galaxy S, Pixel: <= 480px)
+   ========================================================================== */
+@media (max-width: 480px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .section-spacing {
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+  }
+
+  .header-container {
+    height: 68px;
+  }
+
+  .brand-sodic-logo {
+    height: 34px;
+    max-width: 135px;
+  }
+
+  .brand-subbadge {
+    font-size: 0.62rem;
+  }
+
+  .hero-section {
+    padding-top: 95px;
+    padding-bottom: 3rem;
+  }
+
+  .hero-headline {
+    font-size: 1.85rem;
+    line-height: 1.18;
+  }
+
+  .hero-launch-badge {
+    font-size: 0.72rem;
+    padding: 0.4rem 0.85rem;
+  }
+
+  .hero-subtitle-highlight {
+    font-size: 0.92rem;
+  }
+
+  .hero-key-line {
+    font-size: 0.82rem;
+  }
+
+  .hero-stats-row {
+    gap: 0.45rem;
+  }
+
+  .hero-stat-card {
+    padding: 0.55rem 0.25rem;
+  }
+
+  .hero-stat-number {
+    font-size: 1.1rem;
+  }
+
+  .hero-stat-label {
+    font-size: 0.6rem;
+  }
+
+  .frosted-lead-card {
+    padding: 1.45rem 1rem;
+  }
+
+  .lead-card-title {
+    font-size: 1.35rem;
+  }
+
+  .lead-card-sub {
+    font-size: 0.8rem;
+  }
+
+  .country-code-wrapper {
+    flex: 0 0 100px;
+  }
+
+  .country-code-select {
+    padding: 0.85rem 1.15rem 0.85rem 0.45rem;
+  }
+
+  .country-chevron {
+    right: 0.4rem;
+  }
+
+  .phone-number-input {
+    padding-left: 2.25rem;
+  }
+
+  .phone-field-icon {
+    left: 0.75rem;
+  }
+
+  .project-visual-box {
+    height: 240px;
+  }
+
+  .price-main-figure {
+    font-size: 1.85rem;
+  }
+
+  .btn {
+    padding: 0.85rem 1.25rem;
+    font-size: 0.82rem;
+  }
+
+  .floating-whatsapp-btn {
+    width: 52px;
+    height: 52px;
+  }
+
+  .floating-whatsapp-btn i {
+    font-size: 1.7rem;
+  }
+}
+
+/* ==========================================================================
+   EXTRA COMPACT & FOLDABLES (Galaxy Z Fold, narrow screens <= 360px)
+   ========================================================================== */
+@media (max-width: 360px) {
+  .container {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+  .hero-headline {
+    font-size: 1.62rem;
+  }
+
+  .hero-stats-row {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .phone-input-group {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .country-code-wrapper {
+    flex: 1 1 auto;
+    width: 100%;
+    height: 48px;
+  }
+
+  .phone-input-wrapper {
+    width: 100%;
+    height: 48px;
+  }
+
+  .country-code-select {
+    padding: 0.85rem 1.5rem 0.85rem 0.75rem;
+  }
+
+  .project-official-logo {
+    max-width: 220px;
+  }
+
+  .project-visual-box {
+    height: 200px;
+  }
+
+  .about-title {
+    font-size: 1.5rem;
+  }
+
+  .intro-main-title {
+    font-size: 1.65rem;
   }
 }
