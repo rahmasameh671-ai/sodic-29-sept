@@ -1,6 +1,6 @@
 /**
- * SODIC PREMIER DEVELOPMENTS - BY PROPERTIES-E
- * Main JavaScript Engine: Form Handling, Mobile Navigation & UI Interactions
+ * SODIC PREMIER DEVELOPMENTS — BY PROPERTIES-E
+ * Main JavaScript Engine: Form Handling, Lead Routing, Analytics & UI Interactions
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /**
- * Mobile Navigation Toggle
+ * Mobile Navigation Menu
  */
 function initMobileNavigation() {
   const menuBtn = document.getElementById('mobileMenuBtn');
@@ -36,7 +36,7 @@ function initMobileNavigation() {
     });
   });
 
-  // Close menu on clicking outside
+  // Close menu when clicking outside
   document.addEventListener('click', (e) => {
     if (navMenu.classList.contains('open') && !navMenu.contains(e.target) && !menuBtn.contains(e.target)) {
       navMenu.classList.remove('open');
@@ -47,12 +47,14 @@ function initMobileNavigation() {
 }
 
 /**
- * Lead Capture Form
- * Routes to:
+ * Lead Capture Form Processing & Multi-Channel Routing
+ * Lead Routing:
  * - Rahma@irtkaz.com
  * - Mostafa.a.ashmawy@gmail.com
  * - Mostafa.ashmawy@irtkaz.com
- * Fast-tracks to WhatsApp (+201033373331)
+ * Webhook: Zapier catch hook
+ * Local Storage persistence
+ * WhatsApp conversion fast-track (+201033373331)
  */
 function initLeadCaptureForm() {
   const leadForm = document.getElementById('heroLeadForm');
@@ -83,16 +85,21 @@ function initLeadCaptureForm() {
     submitBtn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> REGISTERING...';
     submitBtn.disabled = true;
 
-    // Construct Zapier webhook payload matching user schema
+    // Construct Zapier webhook payload matching exact backend schema
     const zapierPayload = {
       fullName: fullName,
       phoneNumber: fullPhone,
-      landingPageUrl: window.location.href,
-      submissionDate: new Date().toISOString(),
       countryCode: countryCode,
       rawPhone: phoneRaw,
       projectFocus: defaultProject,
-      source: 'SODIC Landing Page - The Lakes Launch - Properties'
+      landingPageUrl: window.location.href,
+      submissionDate: new Date().toISOString(),
+      source: 'SODIC Landing Page - The Lakes Launch - Properties',
+      routedEmails: [
+        'Rahma@irtkaz.com',
+        'Mostafa.a.ashmawy@gmail.com',
+        'Mostafa.ashmawy@irtkaz.com'
+      ]
     };
 
     // Dispatch lead directly to Zapier Webhook
@@ -102,31 +109,19 @@ function initLeadCaptureForm() {
         body: JSON.stringify(zapierPayload),
       });
     } catch (error) {
-      console.error("Zapier Webhook Error:", error);
+      console.warn("Zapier Webhook Notice:", error);
     }
 
-    const leadData = {
-      timestamp: new Date().toISOString(),
-      fullName: fullName,
-      phone: fullPhone,
-      countryCode: countryCode,
-      rawPhone: phoneRaw,
-      projectFocus: defaultProject,
-      source: 'SODIC Landing Page - The Lakes Launch - Properties',
-      routedEmails: [
-        'Rahma@irtkaz.com',
-        'Mostafa.a.ashmawy@gmail.com',
-        'Mostafa.ashmawy@irtkaz.com'
-      ]
-    };
-
+    // Local Storage backup persistence
     try {
       const storedLeads = JSON.parse(localStorage.getItem('properties_eg_sodic_leads') || '[]');
-      storedLeads.push(leadData);
+      storedLeads.push(zapierPayload);
       localStorage.setItem('properties_eg_sodic_leads', JSON.stringify(storedLeads));
-    } catch (e) {}
+    } catch (e) {
+      console.warn("Local storage write notice:", e);
+    }
 
-    // Google tag conversion events
+    // Google Analytics 4 Lead Event
     if (typeof gtag === 'function') {
       gtag('event', 'generate_lead', {
         event_category: 'Lead Capture',
@@ -134,7 +129,7 @@ function initLeadCaptureForm() {
       });
     }
 
-    // Google Ads conversion event for Form Submission
+    // Google Ads conversion event
     if (typeof gtag_report_conversion === 'function') {
       gtag_report_conversion();
     } else if (typeof gtag === 'function') {
@@ -155,7 +150,7 @@ function initLeadCaptureForm() {
 
     showToast(
       'Interest Registered',
-      `Thank you ${fullName}. Our senior property consultant will contact you promptly.`
+      `Thank you ${fullName}. Your inquiry has been routed to our senior property consultants.`
     );
 
     leadForm.reset();
@@ -178,6 +173,9 @@ function initLeadCaptureForm() {
   });
 }
 
+/**
+ * Toast Notification Helper
+ */
 function showToast(title, message) {
   const toast = document.getElementById('leadToast');
   if (!toast) return;
@@ -196,7 +194,7 @@ function showToast(title, message) {
 }
 
 /**
- * Smooth scrolling offset for fixed header navigation anchors
+ * Smooth scrolling with dynamic header offset
  */
 function initSmoothScroll() {
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -207,7 +205,7 @@ function initSmoothScroll() {
       const targetElement = document.querySelector(targetId);
       if (targetElement) {
         e.preventDefault();
-        const headerOffset = window.innerWidth <= 480 ? 68 : (window.innerWidth <= 768 ? 72 : 85);
+        const headerOffset = window.innerWidth <= 768 ? 74 : 88;
         const elementPosition = targetElement.getBoundingClientRect().top;
         const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
@@ -221,13 +219,11 @@ function initSmoothScroll() {
 }
 
 /**
- * Analytics Tracking for WhatsApp and CTA interactions
- * Fires both GA4 'contact' event and Google Ads 'conversion' event
+ * WhatsApp & CTA Analytics Tracking
  */
 function initAnalyticsTracking() {
   document.querySelectorAll('a[href*="wa.me"], .btn-whatsapp, .floating-whatsapp-btn').forEach(btn => {
     btn.addEventListener('click', function() {
-      // 1. GA4 Engagement Event
       if (typeof gtag === 'function') {
         gtag('event', 'contact', {
           event_category: 'Engagement',
@@ -236,7 +232,6 @@ function initAnalyticsTracking() {
         });
       }
 
-      // 2. Google Ads Conversion Event
       if (typeof gtag_report_conversion === 'function') {
         gtag_report_conversion();
       } else if (typeof gtag === 'function') {
@@ -247,4 +242,3 @@ function initAnalyticsTracking() {
     });
   });
 }
-
